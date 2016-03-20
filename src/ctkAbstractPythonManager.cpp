@@ -26,8 +26,7 @@
 #include "ctkAbstractPythonManager.h"
 
 // PythonQT includes
-#include <PythonQt.h>
-#include <PythonQt_QtBindings.h>
+#include <PythonQt/PythonQt.h>
 
 // STD includes
 #include <csignal>
@@ -152,7 +151,7 @@ void ctkAbstractPythonManager::initPythonQt(int flags)
   this->connect(PythonQt::self(), SIGNAL(pythonStdErr(QString)),
                 SLOT(printStderr(QString)));
 
-  PythonQt_init_QtBindings();
+  //PythonQt_init_QtBindings();
 
   QStringList initCode;
 
@@ -312,7 +311,7 @@ QStringList ctkAbstractPythonManager::pythonAttributes(const QString& pythonVari
   QStringList moduleList = module.split(".", QString::SkipEmptyParts);
   foreach(const QString& module, moduleList)
     {
-    object = PyDict_GetItemString(dict, module.toAscii().data());
+    object = PyDict_GetItemString(dict, module.toLatin1().data());
     if (prevObject) { Py_DECREF(prevObject); }
     if (!object)
       {

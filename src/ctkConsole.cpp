@@ -59,6 +59,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <QVBoxLayout>
 #include <QScrollBar>
 #include <QDebug>
+#include <QMimeData>
 
 // CTK includes
 #include "ctkConsole.h"
